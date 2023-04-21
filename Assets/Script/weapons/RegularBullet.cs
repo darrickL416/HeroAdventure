@@ -30,11 +30,22 @@ public class RegularBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var hittable = collision.GetComponent<Ihittable>();
+        hittable?.GetHit(bulletData.Damage, gameObject);
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             HitObstacle();
+        }else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy")){
+            HitEnemy();
         }
+
         Destroy(gameObject);
+    }
+
+    private void HitEnemy()
+    {
+        Debug.Log("hit enemy");
     }
 
     private void HitObstacle()

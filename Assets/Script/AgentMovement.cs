@@ -33,7 +33,7 @@ public class AgentMovement : MonoBehaviour
         movementDirection = movementInput;
         currentVelocity = CalculateSpeed(movementInput);
     
-        Debug.Log(movementInput);
+       
 
         if (movementInput.magnitude > 0)
         {
