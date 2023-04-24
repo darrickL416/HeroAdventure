@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AgentInput : MonoBehaviour
+public class AgentInput : MonoBehaviour, IAgentInput
 {
     private Camera mainCamera;
 
@@ -14,9 +14,9 @@ public class AgentInput : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-        
 
-      }
+
+    }
 
     [field: SerializeField]
 
@@ -80,8 +80,8 @@ public class AgentInput : MonoBehaviour
         mousePos.z = mainCamera.nearClipPlane;
         var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(mousePos);
         OnPointerPositionChange?.Invoke(mouseInWorldSpace);
-        
-        
+
+
     }
 
     private void GetMovementInput()

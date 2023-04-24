@@ -14,6 +14,6 @@ public class AgentAudioStep : AudioPlayer
 
     public void PlayStepSound()
     {
-        PlayClipWithClip(stepClip);
+        PlayClipWithvarablePitch(stepClip);
     }
 }

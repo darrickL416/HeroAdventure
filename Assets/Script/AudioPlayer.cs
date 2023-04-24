@@ -27,7 +27,7 @@ public abstract class AudioPlayer : MonoBehaviour
         basePitch = audioSourse.pitch;
     }
 
-    protected void PlayClipWithClip(AudioClip clip)
+    protected void PlayClipWithvarablePitch(AudioClip clip)
     {
         var randomPitch = Random.Range(pitchRandomes, pitchRandomes);
         audioSourse.pitch = basePitch + randomPitch;
@@ -40,6 +40,10 @@ public abstract class AudioPlayer : MonoBehaviour
         audioSourse.clip = clip;
         audioSourse.Play();
     }
+
+    
+    
+
 
 
    

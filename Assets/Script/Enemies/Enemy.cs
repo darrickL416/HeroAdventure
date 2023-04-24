@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour, Ihittable
+public class Enemy : MonoBehaviour, Ihittable, IAgent
 {
     [field: SerializeField]
     public EnemyDataSO EnemyData { get; set; }
+
     [field: SerializeField]
     public int Health { get; private set; } = 2;
 
     [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
+
+    [field: SerializeField]
+    public UnityEvent OnDie { get; set; }
 
 
     private void Start()
@@ -25,9 +29,17 @@ public class Enemy : MonoBehaviour, Ihittable
     {
         Health--;
         OnGetHit?.Invoke();
-        if(Health <= 0)
+        if (Health <= 0)
         {
-            Destroy(gameObject);
+            OnDie?.Invoke();
+            StartCoroutine(WaitToDie());
+
         }
+    }
+
+    IEnumerator WaitToDie()
+    {
+        yield return new WaitForSeconds(.53f);
+        Destroy(gameObject);
     }
 }

@@ -8,6 +8,6 @@ public interface Ihittable
 
     UnityEvent OnGetHit { get; set; }
 
-    void GetHit(int damage, GameObject damagDealer);
+    public void GetHit(int damage, GameObject damagDealer);
 
 }
