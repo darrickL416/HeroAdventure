@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour, Ihittable, IAgent
+public class Enemy :MonoBehaviour, Ihittable, IAgent
 {
     [field: SerializeField]
     public EnemyDataSO EnemyData { get; set; }
@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour, Ihittable, IAgent
             StartCoroutine(WaitToDie());
 
         }
+
+       
     }
 
     IEnumerator WaitToDie()
